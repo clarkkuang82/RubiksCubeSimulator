@@ -6,7 +6,48 @@
     <title>Rubik's Cube Simulator</title>
   </head>
   <body>
-    <div id="app"></div>
+    <header class="app-header">
+      <h1>Rubik's Cube Simulator</h1>
+      <p class="tagline">See exactly which pieces an algorithm changes</p>
+    </header>
+    <main class="layout">
+      <section class="player-pane">
+        <div id="player-mount"></div>
+      </section>
+      <aside class="side-pane">
+        <section class="card stats-card">
+          <h2>Changed pieces</h2>
+          <div id="stats"></div>
+          <label class="highlight-toggle">
+            <input type="checkbox" data-testid="highlight-toggle" />
+            Highlight changed pieces
+          </label>
+        </section>
+        <section class="card">
+          <h2>Algorithm</h2>
+          <form id="alg-form" class="alg-form">
+            <input
+              type="text"
+              data-testid="alg-input"
+              placeholder="e.g. R U R' U'"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button type="submit" data-testid="alg-apply">Apply</button>
+          </form>
+          <p class="error" data-testid="alg-error" hidden></p>
+        </section>
+        <section class="card">
+          <h2>Controls</h2>
+          <div id="actions" class="actions">
+            <button data-testid="scramble">Scramble</button>
+            <button data-testid="undo">Undo</button>
+            <button data-testid="reset">Reset</button>
+          </div>
+          <div id="move-buttons"></div>
+        </section>
+      </aside>
+    </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
