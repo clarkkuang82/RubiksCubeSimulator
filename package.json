@@ -1,0 +1,28 @@
+{
+  "name": "rubikscubesimulator",
+  "version": "1.0.0",
+  "description": "A 3x3 Rubik's cube simulator with a changed-pieces counter and piece highlighting",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "browser:install": "node scripts/install-browser.mjs"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cubing": "0.63.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@puppeteer/browsers": "^3.0.4",
+    "@types/node": "^25.9.3",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16",
+    "vitest": "^4.1.8"
+  }
+}
