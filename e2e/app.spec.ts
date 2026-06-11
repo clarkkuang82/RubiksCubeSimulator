@@ -10,10 +10,15 @@ test.beforeEach(async ({ page }) => {
 test("E1: loads solved with a rendered player", async ({ page }) => {
   await expect(stat(page, "changed-total")).toHaveText("0");
   await expect(stat(page, "move-count")).toHaveText("0");
-  const hasShadowRoot = await page
+  // The player uses a closed shadow root, so check that the custom
+  // element upgraded and renders at a real size instead.
+  const upgraded = await page
     .locator("twisty-player")
-    .evaluate((el) => el.shadowRoot !== null);
-  expect(hasShadowRoot).toBe(true);
+    .evaluate((el) => el.constructor !== HTMLElement);
+  expect(upgraded).toBe(true);
+  const box = await page.locator("twisty-player").boundingBox();
+  expect(box!.width).toBeGreaterThan(100);
+  expect(box!.height).toBeGreaterThan(100);
 });
 
 test("E2: a single R changes 8 pieces", async ({ page }) => {
